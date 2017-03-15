@@ -1,12 +1,21 @@
 require 'docking_station'
 
 describe DockingStation do
-  it "responds to release_bike" do #New instance to respond to release_bike method.
-    expect(subject).to respond_to :release_bike #Expect the 'subject' i.e. instance, to respond to the release_bike method.
+  describe '#release_bike' do
+
+    it 'releases a bike' do
+      bike = Bike.new
+      subject.dock(bike)
+      expect(subject.release_bike).to eq bike
+    end
+
+    it 'raises an error when there are no bikes available' do
+      expect{ subject.release_bike }.to raise_error 'No bikes available'
+    end
   end
 
   it "checks if bike is working" do
-    expect(subject.release_bike).to be_working
+    # expect(subject.release_bike).to be_working
   end
 
   it "returns docked bike" do
