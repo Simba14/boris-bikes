@@ -3,7 +3,11 @@ require 'docking_station'
 describe DockingStation do
   it "responds to release_bike" do #New instance to respond to release_bike method.
     expect(subject).to respond_to :release_bike #Expect the 'subject' i.e. instance, to respond to the release_bike method.
-end
+  end
+
+  it "checks if bike is working" do
+    expect(subject.release_bike).to be_working
+  end
 end
 
 
@@ -12,7 +16,7 @@ end
 
 describe Bike do
 it { is_expected.to respond_to :working?}
-end 
+end
 
 Shorter option:
 describe DockingStation do
